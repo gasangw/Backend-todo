@@ -14,10 +14,11 @@ export class TaskService {
   }
 
   create(task: any) {
+    console.log(task);
     return this.taskRepository.create(task);
   }
 
   delete(id: number) {
-    return this.taskRepository.delete(id);
+    return this.taskRepository.remove(id);
   }
 }

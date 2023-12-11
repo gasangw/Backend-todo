@@ -17,11 +17,12 @@ export class TaskController {
 
   @Post()
   create(@Body() body: any) {
+    console.log(body);
     return this.taskService.create(body);
   }
 
   @Delete()
-  delete(@Param('id') id: string) {
+  remove(@Param('id') id: string) {
     return this.taskService.delete(parseInt(id));
   }
 }

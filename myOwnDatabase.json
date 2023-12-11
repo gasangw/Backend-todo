@@ -1,1 +1,18 @@
-{"task":[{"id":"0a569707-132a-4dc1-8674-c4dc05d88f40","status":"OPEN"},{"id":"9886c94b-548c-4833-9f5a-8489842a5170","status":"OPEN"},{"id":"7baac898-b49c-40b4-96b4-915e0767204a","status":"OPEN"},{"id":"7b58a416-200a-4b82-a913-fcae7fa4db30","status":"OPEN"},{"id":"605c5c31-f2cb-4b64-a15d-cb18c8a487bc","status":"OPEN"},{"id":"f8e67b8c-88ab-4804-b1a0-8f7d21ccce04","status":"OPEN"},{"id":"06469b6f-f76e-4424-9a1a-31d258dd9db2","status":"OPEN"},{"id":"f44f3123-66d0-4d16-8a30-15a5c03cabd6","status":"OPEN","title":"Gasangwa","description":"doing the todo exercise in nestjs","categoryId":1},{"id":"0bca2b1d-19b2-49ed-ace9-a07e1731c718","status":"OPEN","title":"Gasangwa","description":"doing the todo exercise in nestjs","categoryId":1}]}
+{
+  "task": [
+    {
+      "id": "f44f3123-66d0-4d16-8a30-15a5c03cabd6",
+      "status": "OPEN",
+      "title": "Gasangwa",
+      "description": "doing the todo exercise in nestjs",
+      "categoryId": 1
+    },
+    {
+      "id": "0bca2b1d-19b2-49ed-ace9-a07e1731c718",
+      "status": "OPEN",
+      "title": "Gasangwa",
+      "description": "doing the todo exercise in nestjs",
+      "categoryId": 1
+    }
+  ]
+}

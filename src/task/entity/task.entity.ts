@@ -6,7 +6,7 @@ export class Task {
   categoryId: number;
 }
 
-enum TaskStatus {
+export enum TaskStatus {
   OPEN = 'OPEN',
   DONE = 'DONE',
   IN_PROGRESS = 'IN_PROGRESS',

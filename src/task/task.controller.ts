@@ -23,6 +23,6 @@ export class TaskController {
 
   @Delete()
   remove(@Param('id') id: string) {
-    return this.taskService.delete(parseInt(id));
+    return this.taskService.delete(id);
   }
 }

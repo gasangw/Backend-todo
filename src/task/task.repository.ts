@@ -1,12 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { JsonDB, Config } from 'node-json-db';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { JsonDB } from 'node-json-db';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class TaskRepository {
-  private db: JsonDB;
-  constructor() {
-    this.db = new JsonDB(new Config('myOwnDatabase', true, false, '/'));
+  constructor(@Inject('DATABASE') private db: JsonDB) {
     if (!this.db.exists('/task')) {
       this.db.push('/task', []);
     }
@@ -34,7 +32,7 @@ export class TaskRepository {
     return EachTask;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     await this.db.delete(`/task[${id}]`);
   }
 }

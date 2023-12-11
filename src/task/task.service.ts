@@ -18,7 +18,7 @@ export class TaskService {
     return this.taskRepository.create(task);
   }
 
-  delete(id: number) {
-    return this.taskRepository.remove(id);
+  delete(id: string) {
+    this.taskRepository.remove(id);
   }
 }

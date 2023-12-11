@@ -4,4 +4,20 @@ import { TaskRepository } from './task.repository';
 @Injectable()
 export class TaskService {
   constructor(private readonly taskRepository: TaskRepository) {}
+
+  getAll() {
+    return this.taskRepository.getAll();
+  }
+
+  getOne(id: number) {
+    return this.taskRepository.getOne(id);
+  }
+
+  create(task: any) {
+    return this.taskRepository.create(task);
+  }
+
+  delete(id: number) {
+    return this.taskRepository.delete(id);
+  }
 }

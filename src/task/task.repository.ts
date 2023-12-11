@@ -1,6 +1,7 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { JsonDB } from 'node-json-db';
 import { v4 as uuidv4 } from 'uuid';
+import { Task } from './entity/task.entity';
 
 @Injectable()
 export class TaskRepository {
@@ -23,7 +24,7 @@ export class TaskRepository {
     return task;
   }
 
-  async create(task: any) {
+  async create(task: Task) {
     const EachTask = await this.db.push('/task[]', {
       id: uuidv4(),
       status: 'OPEN',

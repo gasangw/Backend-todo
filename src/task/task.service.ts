@@ -13,9 +13,8 @@ export class TaskService {
     return this.taskRepository.getOne(id);
   }
 
-  create(task: any) {
-    console.log(task);
-    return this.taskRepository.create(task);
+  create(body) {
+    this.taskRepository.create(body);
   }
 
   delete(id: string) {

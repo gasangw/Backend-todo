@@ -9,7 +9,7 @@ export class TaskService {
     return this.taskRepository.getAll();
   }
 
-  getOne(id: number) {
+  getOne(id: string) {
     return this.taskRepository.getOne(id);
   }
 

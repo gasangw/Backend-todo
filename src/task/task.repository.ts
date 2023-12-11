@@ -17,7 +17,7 @@ export class TaskRepository {
     return tasks;
   }
 
-  async getOne(id: number) {
+  async getOne(id: string) {
     const task = await this.db.getData(`/task[${id}]`);
     if (!task) {
       throw new NotFoundException(`Did not find task with ${id}`);

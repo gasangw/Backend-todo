@@ -11,13 +11,13 @@ export class TaskController {
   }
 
   @Get()
-  getOne(@Param('id') id: string) {
-    return this.taskService.getOne(parseInt(id));
+  async getOne(@Param('id') id: string) {
+    const task = await this.taskService.getOne(id);
+    return task;
   }
 
   @Post()
   create(@Body() body: any) {
-    console.log(body);
     return this.taskService.create(body);
   }
 

@@ -1,32 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { Task, TaskStatus } from './entity/task.entity';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JsonDB, Config } from 'node-json-db';
 
 @Injectable()
 export class TaskRepository {
-  db = new JsonDB(new Config('myOwnDatabase', true, false, '/'));
-  storage: Task[] = [
-    {
-      id: 1,
-      title: 'Task 1',
-      description: 'Description 1',
-      status: TaskStatus.OPEN,
-      categoryId: 1,
-    },
-  ];
-  getAll() {
-    return this.storage;
+  private db: JsonDB;
+  constructor() {
+    this.db = new JsonDB(new Config('myOwnDatabase', true, false, '/'));
   }
 
-  getOne(id: number) {
-    return this.storage.find((task) => task.id === id);
+  async getAll() {
+    const tasks = await this.db.getData('/tasks');
+    return tasks;
   }
 
-  create(task: Task) {
-    return this.storage.push(task);
+  async getOne(id: number) {
+    const task = await this.db.getData(`/tasks[${id}]`);
+    if (!task) {
+      throw new NotFoundException(`Did not find task with ${id}`);
+    }
+    return task;
   }
 
-  delete(id: number) {
-    return this.storage.filter((task) => task.id !== id);
+  async remove(id: number) {
+    await this.db.delete(`/tasks[${id}]`);
   }
 }

@@ -1,18 +1,1 @@
-{
-  "task": [
-    {
-      "id": "f44f3123-66d0-4d16-8a30-15a5c03cabd6",
-      "status": "OPEN",
-      "title": "Gasangwa",
-      "description": "doing the todo exercise in nestjs",
-      "categoryId": 1
-    },
-    {
-      "id": "0bca2b1d-19b2-49ed-ace9-a07e1731c718",
-      "status": "OPEN",
-      "title": "Gasangwa",
-      "description": "doing the todo exercise in nestjs",
-      "categoryId": 1
-    }
-  ]
-}
+{"task":[{"id":"f44f3123-66d0-4d16-8a30-15a5c03cabd6","status":"OPEN","title":"Gasangwa","description":"doing the todo exercise in nestjs","categoryId":1},{"id":"0bca2b1d-19b2-49ed-ace9-a07e1731c718","status":"OPEN","title":"Gasangwa","description":"doing the todo exercise in nestjs","categoryId":1},{"id":"38374983-4867-4987-b41b-3a1a4b50288a","status":"OPEN","title":"The Gym","description":"Its a training institute","categoryId":2}]}

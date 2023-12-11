@@ -17,11 +17,14 @@ export class TaskRepository {
   }
 
   async getOne(id: string) {
-    const task = await this.db.getData(`/task[${id}]`);
-    if (!task) {
+    try {
+      const tasks = await this.db.getData('/task');
+      const task = tasks.find((task: Task) => task.id === id);
+      if (!task) throw new NotFoundException(`Did not find task with ${id}`);
+      return task;
+    } catch (err) {
       throw new NotFoundException(`Did not find task with ${id}`);
     }
-    return task;
   }
 
   async create(task: Task) {
@@ -34,6 +37,7 @@ export class TaskRepository {
   }
 
   async remove(id: string) {
-    await this.db.delete(`/task[${id}]`);
+    const tasks = await this.db.getData('/task');
+    return tasks.filter((task: Task) => task.id !== id);
   }
 }

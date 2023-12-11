@@ -11,7 +11,7 @@ export class TaskController {
     return this.taskService.getAll();
   }
 
-  @Get()
+  @Get(':id')
   async getOne(@Param('id') id: string) {
     const task = await this.taskService.getOne(id);
     return task;
@@ -23,7 +23,7 @@ export class TaskController {
     return this.taskService.create(body);
   }
 
-  @Delete()
+  @Delete(':id')
   remove(@Param('id') id: string) {
     return this.taskService.delete(id);
   }

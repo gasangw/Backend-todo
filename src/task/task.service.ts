@@ -18,6 +18,6 @@ export class TaskService {
   }
 
   delete(id: string) {
-    this.taskRepository.remove(id);
+    return this.taskRepository.remove(id);
   }
 }

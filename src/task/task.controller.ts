@@ -11,7 +11,10 @@ import { TaskService } from './task.service';
 import { TaskDto } from './dto/task-dto';
 import { CategoryService } from '../category/category.service';
 import { ApiTags } from '@nestjs/swagger/dist';
-import { ApiResponse } from '@nestjs/swagger/dist/decorators/api-response.decorator';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+} from '@nestjs/swagger/dist/decorators/api-response.decorator';
 import { ApiBody } from '@nestjs/swagger/dist/decorators/api-body.decorator';
 
 @ApiTags('task')
@@ -23,8 +26,7 @@ export class TaskController {
   ) {}
 
   @Get()
-  @ApiResponse({
-    status: 201,
+  @ApiOkResponse({
     description: 'The tasks have been successfully returned.',
   })
   getAll() {
@@ -32,8 +34,7 @@ export class TaskController {
   }
 
   @Get(':id')
-  @ApiResponse({
-    status: 201,
+  @ApiOkResponse({
     description: 'The task has been successfully returned.',
   })
   async getOne(@Param('id') id: string) {
@@ -42,8 +43,7 @@ export class TaskController {
   }
 
   @Post()
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'The task has been successfully created.',
   })
   @ApiBody({ type: TaskDto, description: 'structure of the user object' })
@@ -58,9 +58,8 @@ export class TaskController {
   }
 
   @Delete(':id')
-  @ApiResponse({
-    status: 201,
-    description: 'The task has been successfully deleted.',
+  @ApiOkResponse({
+    description: 'The task has been successfully removed.',
   })
   async remove(@Param('id') id: string) {
     return await this.taskService.delete(id);

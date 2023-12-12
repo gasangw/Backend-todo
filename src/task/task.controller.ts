@@ -1,10 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { TaskDto } from './dto/task-dto';
+import { CategoryService } from '../category/category.service';
 
 @Controller('task')
 export class TaskController {
-  constructor(private readonly taskService: TaskService) {}
+  constructor(
+    private readonly taskService: TaskService,
+    private readonly categoryService: CategoryService,
+  ) {}
 
   @Get()
   getAll() {
@@ -19,12 +23,11 @@ export class TaskController {
 
   @Post()
   create(@Body() body: TaskDto) {
-    console.log(body);
     return this.taskService.create(body);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.taskService.delete(id);
+  async remove(@Param('id') id: string) {
+    return await this.taskService.delete(id);
   }
 }

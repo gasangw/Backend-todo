@@ -1,19 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Category } from './entity/category.entity';
+import { JsonDB } from 'node-json-db';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class CategoryRepository {
-  Category: Category[] = [
-    {
-      id: 1,
-      name: 'Category 1',
-    },
-  ];
-  getAllCategories() {
-    return this.Category;
+  constructor(@Inject('DATABASE') private db: JsonDB) {}
+
+  async getAllCategories() {
+    const categories = await this.db.getData('/category');
+    return categories;
   }
 
-  createCategory(category: Category) {
-    return this.Category.push(category);
+  async createCategory(category: Category) {
+    const newCategory = await this.db.push('/category[]', {
+      id: uuidv4(),
+      ...category,
+    });
+    return newCategory;
+  }
+
+  async findOneCategory(id: string) {
+    const categories = await this.db.getData('/category');
+    const category = categories.find(
+      (category: Category) => category.id === id,
+    );
+    return category;
   }
 }

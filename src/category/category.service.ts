@@ -1,15 +1,19 @@
-// import { Injectable } from '@nestjs/common';
-// import { CategoryRepository } from './category.repository';
+import { Injectable } from '@nestjs/common';
+import { CategoryRepository } from './category.repository';
 
-// @Injectable()
-// export class CategoryService {
-//   constructor(private readonly categoryRepository: CategoryRepository) {}
+@Injectable()
+export class CategoryService {
+  constructor(private readonly categoryRepository: CategoryRepository) {}
 
-//   getAllCategories() {
-//     return this.categoryRepository.getAllCategories();
-//   }
+  getAllCategories() {
+    return this.categoryRepository.getAllCategories();
+  }
 
-//   createCategory(body) {
-//     return this.categoryRepository.createCategory(body);
-//   }
-// }
+  getOneCategory(id: string) {
+    return this.categoryRepository.findOneCategory(id);
+  }
+
+  createCategory(body) {
+    this.categoryRepository.createCategory(body);
+  }
+}

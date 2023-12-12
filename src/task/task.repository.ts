@@ -38,6 +38,7 @@ export class TaskRepository {
 
   async remove(id: string) {
     const tasks = await this.db.getData('/task');
-    return tasks.filter((task: Task) => task.id !== id);
+    const updatedTasks = tasks.filter((task: Task) => task.id !== id);
+    return await this.db.push('/task', updatedTasks);
   }
 }

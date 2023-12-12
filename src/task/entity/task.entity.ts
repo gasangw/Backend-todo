@@ -3,7 +3,7 @@ export class Task {
   title: string;
   description: string;
   status: TaskStatus.OPEN;
-  categoryId: number;
+  categoryId: string;
 }
 
 export enum TaskStatus {

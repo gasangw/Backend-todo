@@ -1,4 +1,4 @@
-import { IsString, IsNumber } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class TaskDto {
   @IsString()
@@ -7,6 +7,6 @@ export class TaskDto {
   @IsString()
   description: string;
 
-  @IsNumber()
-  categoryId: number;
+  @IsString()
+  categoryId: string;
 }

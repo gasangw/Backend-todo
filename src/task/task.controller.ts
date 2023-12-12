@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { TaskService } from './task.service';
 import { TaskDto } from './dto/task-dto';
 import { CategoryService } from '../category/category.service';
@@ -22,7 +30,13 @@ export class TaskController {
   }
 
   @Post()
-  create(@Body() body: TaskDto) {
+  async create(@Body() body: TaskDto) {
+    const category = await this.categoryService.getOneCategory(body.categoryId);
+    if (!category) {
+      throw new NotFoundException(
+        `Category with id ${body.categoryId} not found`,
+      );
+    }
     return this.taskService.create(body);
   }
 

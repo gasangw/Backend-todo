@@ -16,7 +16,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('Nestjs Todo API', app, document);
+  SwaggerModule.setup('Nestjs-Todo-API', app, document);
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

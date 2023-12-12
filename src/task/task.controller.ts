@@ -10,7 +10,9 @@ import {
 import { TaskService } from './task.service';
 import { TaskDto } from './dto/task-dto';
 import { CategoryService } from '../category/category.service';
+import { ApiTags } from '@nestjs/swagger/dist';
 
+@ApiTags('task')
 @Controller('task')
 export class TaskController {
   constructor(

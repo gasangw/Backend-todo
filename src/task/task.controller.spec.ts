@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Test, TestingModule } from '@nestjs/testing';
 import { TaskController } from './task.controller';
 import { TaskService } from './task.service';
@@ -32,7 +31,7 @@ describe('TaskController', () => {
           categoryId: 'category1',
         } as Task);
       },
-      create: (body) => {
+      create: () => {
         return Promise.resolve({
           id: '1',
           title: 'test',
@@ -41,8 +40,19 @@ describe('TaskController', () => {
           categoryId: 'category1',
         } as Task);
       },
-      delete: (id: string) => {
+      delete: () => {
         return Promise.resolve();
+      },
+    };
+
+    fakeCategoryService = {
+      getAllCategories: () => {
+        return Promise.resolve([
+          {
+            id: 'category1',
+            name: 'test',
+          },
+        ]);
       },
     };
 

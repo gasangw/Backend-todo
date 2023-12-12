@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { CategoryController } from './category.controller';
 import { CategoryService } from './category.service';
 import { CategoryRepository } from './category.repository';
 import { Config, JsonDB } from 'node-json-db';
+import { TaskModule } from 'src/task/task.module';
 
 @Module({
   controllers: [CategoryController],
@@ -15,5 +16,6 @@ import { Config, JsonDB } from 'node-json-db';
     },
   ],
   exports: [CategoryService, CategoryRepository],
+  imports: [forwardRef(() => TaskModule)],
 })
 export class CategoryModule {}

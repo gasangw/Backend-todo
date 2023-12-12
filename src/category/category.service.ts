@@ -12,4 +12,8 @@ export class CategoryService {
   createCategory(body) {
     this.categoryRepository.createCategory(body);
   }
+
+  removeCategory(id: string) {
+    return this.categoryRepository.removeCategory(id);
+  }
 }

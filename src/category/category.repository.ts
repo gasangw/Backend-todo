@@ -19,4 +19,12 @@ export class CategoryRepository {
     });
     return newCategory;
   }
+
+  async removeCategory(id: string) {
+    const categories = await this.db.getData('/category');
+    const upatedCategories = categories.filter(
+      (category: Category) => category.id !== id,
+    );
+    return await this.db.push('/category', upatedCategories);
+  }
 }

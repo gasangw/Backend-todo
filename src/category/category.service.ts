@@ -9,10 +9,6 @@ export class CategoryService {
     return this.categoryRepository.getAllCategories();
   }
 
-  getOneCategory(id: string) {
-    return this.categoryRepository.findOneCategory(id);
-  }
-
   createCategory(body) {
     this.categoryRepository.createCategory(body);
   }

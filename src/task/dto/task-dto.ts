@@ -6,7 +6,4 @@ export class TaskDto {
 
   @IsString()
   description: string;
-
-  @IsString()
-  categoryId: string;
 }

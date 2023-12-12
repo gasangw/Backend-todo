@@ -31,13 +31,13 @@ export class TaskController {
 
   @Post()
   async create(@Body() body: TaskDto) {
-    const category = await this.categoryService.getOneCategory(body.categoryId);
-    if (!category) {
-      throw new NotFoundException(
-        `Category with id ${body.categoryId} not found`,
-      );
+    const categories = await this.categoryService.getAllCategories();
+    if (categories.length === 0) {
+      throw new NotFoundException('No categories found');
     }
-    return this.taskService.create(body);
+    const categoryId: string = categories.slice(-1)[0].id;
+    const newBody = { ...body, categoryId };
+    return this.taskService.create(newBody);
   }
 
   @Delete(':id')

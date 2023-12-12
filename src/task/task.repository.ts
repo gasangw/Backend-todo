@@ -28,13 +28,17 @@ export class TaskRepository {
   }
 
   async create(task: Task) {
-    const EachTask = await this.db.push('/task[]', {
-      id: uuidv4(),
-      status: TaskStatus.OPEN,
-      ...task,
-      categoryId: task.categoryId,
-    });
-    return EachTask;
+    try {
+      const EachTask = await this.db.push('/task[]', {
+        id: uuidv4(),
+        ...task,
+        status: TaskStatus.OPEN,
+        categoryId: task.categoryId,
+      });
+      return EachTask;
+    } catch (error) {
+      throw new NotFoundException(`Did not create task ${error}`);
+    }
   }
 
   async remove(id: string) {

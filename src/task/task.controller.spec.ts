@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Test, TestingModule } from '@nestjs/testing';
 import { TaskController } from './task.controller';
 import { TaskService } from './task.service';
@@ -31,13 +32,18 @@ describe('TaskController', () => {
           categoryId: 'category1',
         } as Task);
       },
-      // create: () => {},
-      // delete: (id: string) => {
-      //   return Promise.resolve({ id });
-      // },
-    };
-    fakeCategoryService = {
-      // create: () => {},
+      create: (body) => {
+        return Promise.resolve({
+          id: '1',
+          title: 'test',
+          description: 'testing in action',
+          status: 'OPEN',
+          categoryId: 'category1',
+        } as Task);
+      },
+      delete: (id: string) => {
+        return Promise.resolve();
+      },
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -59,5 +65,32 @@ describe('TaskController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('should return an array of tasks', async () => {
+    const tasks = await controller.getAll();
+    expect(tasks.length).toBeGreaterThan(0);
+  });
+
+  it('should return a task with id 1', async () => {
+    const task = await controller.getOne('1');
+    expect(task.id).toEqual('1');
+  });
+
+  it('should remove a task with id 1', async () => {
+    const task = await controller.remove('1');
+    expect(task).toBeUndefined();
+  });
+
+  it('it should create a task', async () => {
+    const allCategories = await fakeCategoryService.getAllCategories();
+    const categoryId = allCategories.slice(-1)[0].id;
+    const newBody = {
+      title: 'test',
+      description: 'testing in action',
+      categoryId,
+    };
+    const newTask = await controller.create(newBody);
+    expect(newTask).toBeDefined();
   });
 });

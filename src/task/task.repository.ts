@@ -31,8 +31,8 @@ export class TaskRepository {
     const EachTask = await this.db.push('/task[]', {
       id: uuidv4(),
       status: TaskStatus.OPEN,
-      categoryId: task.categoryId,
       ...task,
+      categoryId: task.categoryId,
     });
     return EachTask;
   }

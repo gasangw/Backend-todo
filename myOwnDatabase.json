@@ -1,1 +1,50 @@
-{"task":[{"id":"38374983-4867-4987-b41b-3a1a4b50288a","status":"OPEN","title":"The Gym","description":"Its a training institute","categoryId":2},{"id":"02bdb6f9-bb57-47b2-ae5d-70cc713a59be","status":"OPEN","title":"The hills","description":"Many hills are soo nice and adorable","categoryId":4},{"id":"653f186e-c596-458b-acc0-a08122eda03e","status":"OPEN","title":"The hills","description":"Many hills are soo nice and adorable","categoryId":4},{"id":"9dbc42b3-942e-477e-bfae-0c312bc671b4","status":"OPEN","title":"The hills","description":"Many hills are soo nice and adorable","categoryId":6}],"category":[{"id":"05af320a-c9d6-4980-ae79-1a451e9ea582","name":"The hills"},{"id":"60445a97-4130-4b70-8c71-fc946f94b276","name":"The hills"},{"id":"fa85e6ea-ac6f-486e-83f4-41091a049627","name":"The hills"},{"id":"494d38fd-54ab-4ba6-a1c7-421f1ec0008d","name":"The hills"}]}
+{
+  "task": [
+    {
+      "id": "38374983-4867-4987-b41b-3a1a4b50288a",
+      "status": "OPEN",
+      "title": "The Gym",
+      "description": "Its a training institute",
+      "categoryId": 2
+    },
+    {
+      "id": "02bdb6f9-bb57-47b2-ae5d-70cc713a59be",
+      "status": "OPEN",
+      "title": "The hills",
+      "description": "Many hills are soo nice and adorable",
+      "categoryId": 4
+    },
+    {
+      "id": "653f186e-c596-458b-acc0-a08122eda03e",
+      "status": "OPEN",
+      "title": "The hills",
+      "description": "Many hills are soo nice and adorable",
+      "categoryId": 4
+    },
+    {
+      "id": "9dbc42b3-942e-477e-bfae-0c312bc671b4",
+      "status": "OPEN",
+      "title": "The hills",
+      "description": "Many hills are soo nice and adorable",
+      "categoryId": 6
+    }
+  ],
+  "category": [
+    {
+      "id": "05af320a-c9d6-4980-ae79-1a451e9ea582",
+      "name": "The hills"
+    },
+    {
+      "id": "60445a97-4130-4b70-8c71-fc946f94b276",
+      "name": "The hills"
+    },
+    {
+      "id": "fa85e6ea-ac6f-486e-83f4-41091a049627",
+      "name": "The hills"
+    },
+    {
+      "id": "494d38fd-54ab-4ba6-a1c7-421f1ec0008d",
+      "name": "The hills"
+    }
+  ]
+}

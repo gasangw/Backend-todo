@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Category } from './entity/category.entity';
 import { JsonDB } from 'node-json-db';
 import { v4 as uuidv4 } from 'uuid';
@@ -21,10 +21,19 @@ export class CategoryRepository {
   }
 
   async findOneCategory(id: string) {
-    const categories = await this.db.getData('/category');
-    const category = categories.find(
-      (category: Category) => category.id === id,
-    );
-    return category;
+    try {
+      const categories = await this.db.getData('/category');
+      const category = categories.find(
+        (category: Category) => category.id === id,
+      );
+      if (!category) {
+        throw new NotFoundException(`Category with id ${id} not found`);
+      }
+      return category;
+    } catch (err) {
+      throw new NotFoundException(
+        `Category with id ${id} not found due to ${err}`,
+      );
+    }
   }
 }

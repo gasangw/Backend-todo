@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Category } from './entity/category.entity';
 import { JsonDB } from 'node-json-db';
 import { v4 as uuidv4 } from 'uuid';
+import { Category } from './entity/category.entity';
 
 @Injectable()
 export class CategoryRepository {

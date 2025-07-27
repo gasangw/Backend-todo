@@ -16,6 +16,7 @@ import {
   ApiOkResponse,
 } from '@nestjs/swagger/dist/decorators/api-response.decorator';
 import { ApiBody } from '@nestjs/swagger/dist/decorators/api-body.decorator';
+import { Task } from './entity/task.entity';
 
 @ApiTags('task')
 @Controller('task')
@@ -29,7 +30,7 @@ export class TaskController {
   @ApiOkResponse({
     description: 'The tasks have been successfully returned.',
   })
-  getAll() {
+  getAll(): Promise<Task[]> {
     return this.taskService.getAll();
   }
 
@@ -38,7 +39,7 @@ export class TaskController {
     description: 'The task has been successfully returned.',
   })
   async getOne(@Param('id') id: string) {
-    const task = await this.taskService.getOne(id);
+    const task: Task = await this.taskService.getOne(id);
     return task;
   }
 
